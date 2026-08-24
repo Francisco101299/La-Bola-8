@@ -2,79 +2,212 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Bola 8 - Deja que el destino decida</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>La Bola 8 Pro - Decisiones Inteligentes</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎱</text></svg>">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
 </head>
 <body>
-    <div class="container">
-        <!-- PANTALLA DE INICIO -->
-        <div id="home-screen">
-            <div class="logo">🎱</div>
-            <h1>La Bola 8</h1>
-            <p class="subtitle">Deja que el destino decida por vos</p>
-            
-            <div class="categories">
-                <button onclick="showCategory('comida')" class="cat-btn">
-                    <span class="cat-icon">🍕</span>
-                    <span class="cat-text">¿Qué comemos?</span>
-                </button>
-                <button onclick="showCategory('planes')" class="cat-btn">
-                    <span class="cat-icon">🎬</span>
-                    <span class="cat-text">¿Qué hacemos?</span>
-                </button>
-                <button onclick="showCategory('paga')" class="cat-btn">
-                    <span class="cat-icon">💰</span>
-                    <span class="cat-text">¿Quién paga?</span>
-                </button>
-                <button onclick="showCategory('pelicula')" class="cat-btn">
-                    <span class="cat-icon">🎥</span>
-                    <span class="cat-text">¿Qué película?</span>
-                </button>
-                <button onclick="showCategory('excusa')" class="cat-btn">
-                    <span class="cat-icon">🏃</span>
-                    <span class="cat-text">¿Qué excusa uso?</span>
-                </button>
-                <button onclick="showCategory('amor')" class="cat-btn">
-                    <span class="cat-icon">💕</span>
-                    <span class="cat-text">¿Me quiere?</span>
-                </button>
-            </div>
-            
-            <div class="footer">
-                <p>Hecho con 🎱 en Centroamérica</p>
-            </div>
-        </div>
+    <!-- BACKGROUND ANIMADO -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- APP CONTAINER -->
+    <div class="app-container">
         
-        <!-- PANTALLA DE LA BOLA -->
-        <div id="ball-screen" style="display:none;">
-            <h2 id="category-title">¿Qué comemos?</h2>
-            
-            <div class="ball-container">
-                <div class="ball" id="ball">
-                    <div class="ball-shine"></div>
-                    <div class="ball-window">
-                        <div class="ball-inner" id="ball-inner">
-                            <span>?</span>
-                        </div>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-3d">🎱</div>
+                    <div class="logo-text">
+                        <h1>La Bola 8</h1>
+                        <span class="tagline">Decisiones Inteligentes</span>
                     </div>
                 </div>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <span class="theme-icon"></span>
+                </button>
             </div>
-            
-            <p class="instruction" id="instruction">Tocá la bola para agitarla</p>
-            
-            <div id="result-container" style="display:none;">
-                <div class="result-text" id="result">¡Pizza!</div>
-                <div class="result-buttons">
-                    <button onclick="shakeBall()" class="btn-secondary">🎱 Agitar otra vez</button>
-                    <button onclick="shareResult()" class="btn-share">📤 Compartir</button>
-                    <button onclick="goBack()" class="btn-back">← Volver</button>
+        </header>
+
+        <!-- PANTALLA DE INICIO -->
+        <div id="home-screen" class="screen active">
+            <div class="welcome-card">
+                <h2>¿Qué decides hoy?</h2>
+                <p>El destino tiene la respuesta</p>
+            </div>
+
+            <div class="categories-grid">
+                <button onclick="showCategory('comida')" class="category-card" data-category="comida">
+                    <div class="category-icon">🍕</div>
+                    <div class="category-info">
+                        <h3>¿Qué comemos?</h3>
+                        <span>10 opciones</span>
+                    </div>
+                    <div class="category-arrow">→</div>
+                </button>
+
+                <button onclick="showCategory('planes')" class="category-card" data-category="planes">
+                    <div class="category-icon">🎬</div>
+                    <div class="category-info">
+                        <h3>¿Qué hacemos?</h3>
+                        <span>10 opciones</span>
+                    </div>
+                    <div class="category-arrow">→</div>
+                </button>
+
+                <button onclick="showCategory('paga')" class="category-card" data-category="paga">
+                    <div class="category-icon">💰</div>
+                    <div class="category-info">
+                        <h3>¿Quién paga?</h3>
+                        <span>8 opciones</span>
+                    </div>
+                    <div class="category-arrow">→</div>
+                </button>
+
+                <button onclick="showCategory('pelicula')" class="category-card" data-category="pelicula">
+                    <div class="category-icon">🎥</div>
+                    <div class="category-info">
+                        <h3>¿Qué película?</h3>
+                        <span>10 opciones</span>
+                    </div>
+                    <div class="category-arrow">→</div>
+                </button>
+
+                <button onclick="showCategory('excusa')" class="category-card" data-category="excusa">
+                    <div class="category-icon">🏃</div>
+                    <div class="category-info">
+                        <h3>¿Qué excusa?</h3>
+                        <span>10 opciones</span>
+                    </div>
+                    <div class="category-arrow">→</div>
+                </button>
+
+                <button onclick="showCategory('amor')" class="category-card" data-category="amor">
+                    <div class="category-icon">💕</div>
+                    <div class="category-info">
+                        <h3>¿Me quiere?</h3>
+                        <span>10 opciones</span>
+                    </div>
+                    <div class="category-arrow">→</div>
+                </button>
+            </div>
+
+            <div class="quick-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="total-decisions">0</span>
+                    <span class="stat-label">Decisiones</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="today-decisions">0</span>
+                    <span class="stat-label">Hoy</span>
                 </div>
             </div>
         </div>
+
+        <!-- PANTALLA DE LA BOLA -->
+        <div id="ball-screen" class="screen">
+            <button class="back-button" onclick="goBack()">
+                <span>←</span> Volver
+            </button>
+
+            <h2 id="category-title" class="screen-title">¿Qué comemos?</h2>
+
+            <div class="ball-wrapper">
+                <div class="ball-3d" id="ball">
+                    <div class="ball-shadow"></div>
+                    <div class="ball-body">
+                        <div class="ball-highlight"></div>
+                        <div class="ball-window">
+                            <div class="ball-inner" id="ball-inner">
+                                <span class="question-mark">?</span>
+                            </div>
+                        </div>
+                        <div class="ball-reflection"></div>
+                    </div>
+                </div>
+                
+                <div class="instruction-text" id="instruction">
+                    Toca la bola para consultar al destino
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button onclick="shakeBall()" class="btn-primary" id="shake-btn">
+                    <span class="btn-icon"></span>
+                    <span>Agitar Bola</span>
+                </button>
+            </div>
+
+            <div id="result-container" class="result-container hidden">
+                <div class="result-card">
+                    <div class="result-emoji" id="result-emoji">✨</div>
+                    <div class="result-text" id="result-text">¡Pizza!</div>
+                    <div class="result-subtext">El destino ha hablado</div>
+                </div>
+
+                <div class="result-actions">
+                    <button onclick="shakeBall()" class="btn-secondary">
+                        <span>🔄</span> Consultar de nuevo
+                    </button>
+                    <button onclick="shareResult()" class="btn-share">
+                        <span>📤</span> Compartir
+                    </button>
+                    <button onclick="saveToFavorites()" class="btn-favorite">
+                        <span>⭐</span> Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE HISTORIAL -->
+        <div id="history-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-button" onclick="showHome()">
+                    <span>←</span> Volver
+                </button>
+                <h2>Historial</h2>
+            </div>
+            <div id="history-list" class="history-list">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <button onclick="clearHistory()" class="btn-danger">
+                🗑️ Borrar historial
+            </button>
+        </div>
+
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="bottom-nav">
+            <button onclick="showHome()" class="nav-item active" data-nav="home">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </button>
+            <button onclick="showHistory()" class="nav-item" data-nav="history">
+                <span class="nav-icon"></span>
+                <span class="nav-label">Historial</span>
+            </button>
+            <button onclick="showSettings()" class="nav-item" data-nav="settings">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-label">Ajustes</span>
+            </button>
+        </nav>
     </div>
-    
+
+    <!-- SOUND EFFECTS -->
+    <audio id="sound-shake" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZURE" type="audio/wav">
+    </audio>
+
     <script src="script.js"></script>
 </body>
-</html>
+                        </html>
