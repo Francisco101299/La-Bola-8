@@ -5,33 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Bola 8 - Deja que el destino decida</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎱</text></svg>">
 </head>
 <body>
     <div class="container">
-        <h1>🎱 La Bola 8</h1>
-        <p class="subtitle">Deja que el destino decida por vos</p>
-        
-        <div class="categories">
-            <button onclick="showCategory('comida')">🍕 ¿Qué comemos?</button>
-            <button onclick="showCategory('planes')">🎬 ¿Qué hacemos?</button>
-            <button onclick="showCategory('paga')">💰 ¿Quién paga?</button>
-            <button onclick="showCategory('pelicula')">🎥 ¿Qué película?</button>
-            <button onclick="showCategory('excusa')">🏃 ¿Qué excusa uso?</button>
+        <!-- PANTALLA DE INICIO -->
+        <div id="home-screen">
+            <div class="logo">🎱</div>
+            <h1>La Bola 8</h1>
+            <p class="subtitle">Deja que el destino decida por vos</p>
+            
+            <div class="categories">
+                <button onclick="showCategory('comida')" class="cat-btn">
+                    <span class="cat-icon">🍕</span>
+                    <span class="cat-text">¿Qué comemos?</span>
+                </button>
+                <button onclick="showCategory('planes')" class="cat-btn">
+                    <span class="cat-icon">🎬</span>
+                    <span class="cat-text">¿Qué hacemos?</span>
+                </button>
+                <button onclick="showCategory('paga')" class="cat-btn">
+                    <span class="cat-icon">💰</span>
+                    <span class="cat-text">¿Quién paga?</span>
+                </button>
+                <button onclick="showCategory('pelicula')" class="cat-btn">
+                    <span class="cat-icon">🎥</span>
+                    <span class="cat-text">¿Qué película?</span>
+                </button>
+                <button onclick="showCategory('excusa')" class="cat-btn">
+                    <span class="cat-icon">🏃</span>
+                    <span class="cat-text">¿Qué excusa uso?</span>
+                </button>
+                <button onclick="showCategory('amor')" class="cat-btn">
+                    <span class="cat-icon">💕</span>
+                    <span class="cat-text">¿Me quiere?</span>
+                </button>
+            </div>
+            
+            <div class="footer">
+                <p>Hecho con 🎱 en Centroamérica</p>
+            </div>
         </div>
         
-        <div id="wheel-container" style="display:none;">
+        <!-- PANTALLA DE LA BOLA -->
+        <div id="ball-screen" style="display:none;">
+            <h2 id="category-title">¿Qué comemos?</h2>
+            
             <div class="ball-container">
-                <div class="ball">
-                    <div class="ball-inner" id="ball-inner">
-                        <span>?</span>
+                <div class="ball" id="ball">
+                    <div class="ball-shine"></div>
+                    <div class="ball-window">
+                        <div class="ball-inner" id="ball-inner">
+                            <span>?</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <button onclick="shakeBall()" class="shake-btn">🎱 Agitar la Bola</button>
-            <div id="result"></div>
-            <button onclick="goBack()" class="back-btn">← Volver</button>
+            
+            <p class="instruction" id="instruction">Tocá la bola para agitarla</p>
+            
+            <div id="result-container" style="display:none;">
+                <div class="result-text" id="result">¡Pizza!</div>
+                <div class="result-buttons">
+                    <button onclick="shakeBall()" class="btn-secondary">🎱 Agitar otra vez</button>
+                    <button onclick="shareResult()" class="btn-share">📤 Compartir</button>
+                    <button onclick="goBack()" class="btn-back">← Volver</button>
+                </div>
+            </div>
         </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
