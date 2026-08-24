@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bola 8 - Deja que el destino decida</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎱 La Bola 8</h1>
+        <p class="subtitle">Deja que el destino decida por vos</p>
+        
+        <div class="categories">
+            <button onclick="showCategory('comida')">🍕 ¿Qué comemos?</button>
+            <button onclick="showCategory('planes')">🎬 ¿Qué hacemos?</button>
+            <button onclick="showCategory('paga')">💰 ¿Quién paga?</button>
+            <button onclick="showCategory('pelicula')">🎥 ¿Qué película?</button>
+            <button onclick="showCategory('excusa')">🏃 ¿Qué excusa uso?</button>
+        </div>
+        
+        <div id="wheel-container" style="display:none;">
+            <div class="ball-container">
+                <div class="ball">
+                    <div class="ball-inner" id="ball-inner">
+                        <span>?</span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="shakeBall()" class="shake-btn">🎱 Agitar la Bola</button>
+            <div id="result"></div>
+            <button onclick="goBack()" class="back-btn">← Volver</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
